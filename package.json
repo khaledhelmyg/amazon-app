@@ -1,0 +1,13 @@
+{
+  "name": "e-commerce-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd e-commerce-back && npm install && cd ../e-com-front && npm install && npm run build",
+    "start":"node e-commerce-back/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "khaled helmy",
+  "license": "ISC"
+}
