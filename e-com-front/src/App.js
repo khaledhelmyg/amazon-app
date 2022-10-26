@@ -25,14 +25,13 @@ function App() {
   const{state, dispatch: ctxDispatch}=useContext(Store)
   const {cart ,userInfo}=state
 
-  const signoutHandler=()=>{
-    ctxDispatch({type:"USER_SIGNOUT"})
-    localStorage.removeItem('userInfo')
-    localStorage.removeItem('shippingAddress')
-    localStorage.removeItem('paymentMethod')
-    window.location.href('/signin')
-
-  }
+  const signoutHandler = () => {
+    ctxDispatch({ type: 'USER_SIGNOUT' });
+    localStorage.removeItem('userInfo');
+    localStorage.removeItem('shippingAddress');
+    localStorage.removeItem('paymentMethod');
+    window.location.href = '/signin';
+  };
   return (
     <BrowserRouter>
       <div className="d-flex flex-column site-container">
