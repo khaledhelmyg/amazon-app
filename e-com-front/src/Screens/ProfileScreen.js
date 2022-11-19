@@ -51,7 +51,7 @@ export default function ProfileScreen() {
         }
     }
   return (
-    <div className='container small-container'>
+    <div className='container small-container my-3'>
         <Helmet><title>User Profile</title></Helmet>
         <h1 className='my-3'>User Profile</h1>
         <Form onSubmit={submitHandler}>

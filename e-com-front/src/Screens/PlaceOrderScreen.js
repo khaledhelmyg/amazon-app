@@ -80,7 +80,7 @@ export default function PlaceOrderScreen() {
     }
   }, [cart, navigate]);
   return (
-    <div>
+    <div className='m-3'>
       <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
       <Helmet><title>Preview Order</title></Helmet>
       <h1 className='my-3'>Preview Order</h1>

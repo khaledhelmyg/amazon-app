@@ -5,9 +5,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f0f0;
+  min-width: 100% !important;
+
+ 
 }
+
 .site-container{
-  min-height: 100vh;
+  min-height:100vh;
+  overflow-y: hidden;
+  /* min-width:max-content ; */ 
 }
 main{
   flex: 1;
@@ -15,7 +22,7 @@ main{
 .rating span{
   color: #f0c040;
 }
-.btn-primary{
+.btn-primary,.btn-outline-primary{
   background-color: #f0c030;
   color: black;
 }
@@ -27,10 +34,14 @@ code {
   max-width: 100%;
 }
 .img-thumbnail{
-  height: 80px;
+  height: 100px;
 }
-.small-conatainer{
+.small-container{
   max-width: 600px;
+  border-radius: 8px;
+  box-shadow: 20px 10px 40px 0px #999;
+  background-color: #fff;
+  padding: 2rem;
 }
 .checkout-steps > div{
   border-bottom: 0.2rem solid #a0a0a0;
@@ -39,4 +50,128 @@ code {
 .checkout-steps >div.active {
   border-bottom: 00.2rem solid #f08000;
   color: #f08000
+}
+.products{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+
+.product{
+  border: 1px solid rgb(225, 217, 217);
+  box-shadow: 7px 3px 7px 3px #f5ebd1;
+  margin: .7rem; 
+  
+}
+.product img{
+  width: 100%;
+  max-width: 400px;
+  max-height: 202px;
+}
+.product-info{
+  padding: 1rem;
+}
+/* sidebar*/
+.navbar-brand {
+  font-weight: bold;
+}
+.side-navbar {
+  width: 240px;
+  min-height: 100vh;
+  left: -300px;
+  background-color: #100901;
+  transition: 0.5s;
+  position: absolute;
+}
+
+.site-container {
+  transition: 0.4s;
+}
+.active-cont {
+  margin-left: 240px;
+}
+.active-nav {
+  left: 0;
+}
+.text-bold{
+  font-weight: bold;
+}
+.cardColor1{
+  background-color: #bd9504 ;
+  border-radius: 8px;
+
+}
+.cardColor2{
+  background-color: #007aff;
+  color :white
+
+}
+.cardColor3{
+  background-color:#3498db;
+  font-weight: bold;
+  color :white
+
+}
+.link{
+  display: block;
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 16px;
+  text-decoration: none;
+}
+.link:hover{
+    color: green;
+    transition: 200ms ease-in-out;
+}
+
+/* sidebar */
+.sidebar{
+  height: 100%; 
+}  
+.fpTHfu{  
+  background-color: rgba(1,1, 1, 0) !important ;
+  color: white;
+}
+@media screen and (max-width:512px){
+  .dash{
+    width: 100%;
+    padding-left: 15px
+  };
+  .prolist{
+    overflow-y: hidden;
+  }
+  .btn-primary{
+    width: 100%;
+
+  }
+  .bOQEtf{
+    width: 100% !important;
+  }
+}
+@media screen and (min-width:512px)and (max-width:1024px){
+  .dash{
+    width: 68%;
+    margin-left: 3.5vh;
+    
+  } 
+  .bOQEtf{
+    width: 220px !important;
+    min-width: 0 !important;
+  }
+  .col-small{
+    width: 65%;
+    padding: 10px;
+  }
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+.btn-primary{
+  border:none;
+  outline: none;
+}
+.table{
+  padding-right: 1rem;
 }

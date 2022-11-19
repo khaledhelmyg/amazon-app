@@ -73,7 +73,7 @@ function ProductScreen(){
         : error?(
         <MessageBox variant="danger">{error}</MessageBox>
         ):
-        <div>
+        <div className="m-3">
         <Row>
             <Col md={6}>
                 <img className="img-larg" src={product.image} alt={product.name} ></img>
@@ -90,10 +90,11 @@ function ProductScreen(){
                         <Rating rating={product.rating} numReviews={product.numReviews}/>
                     </ListGroup.Item>
                     <ListGroup.Item>
-                        Price : ${product.price}
+                      <strong>  Price : ${product.price - 3}</strong>  {' '} 
+                      <del> ${product.price} </del>
                     </ListGroup.Item>
                     <ListGroup.Item>
-                        Discription : 
+                       <strong> Discription : </strong>
                         <p>{product.description}</p>
                     </ListGroup.Item>
                 </ListGroup>

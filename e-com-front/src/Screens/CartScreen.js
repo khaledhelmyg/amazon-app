@@ -30,7 +30,7 @@ export default function CartScreen(){
         ctxDispatch({type: 'CART_REMOVE_ITEM',payload:item})
     }
     return(
-        <div>
+        <div className='m-3'>
             <Helmet>
                 <title>Shopping Cart</title>
             </Helmet>

@@ -2,11 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {PayPalScriptProvider} from '@paypal/react-paypal-js'
 import 'bootstrap/dist/css/bootstrap.min.css'
+
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {HelmetProvider} from 'react-helmet-async'
 import { StoreProvider } from './Store';
+import {ProSidebarProvider} from 'react-pro-sidebar'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,7 +16,9 @@ root.render(
     <StoreProvider>
     <HelmetProvider>   
       <PayPalScriptProvider deferLoading={true}>
+      <ProSidebarProvider>
         <App />
+        </ProSidebarProvider>
       </PayPalScriptProvider>
       </HelmetProvider>
     </StoreProvider>

@@ -8,6 +8,7 @@ import Col from 'react-bootstrap/Col'
 import { Helmet } from 'react-helmet-async'
 import LoadingBox from '../components/LoadingBox'
 import MessageBox from '../components/MessageBox'
+import Container from 'react-bootstrap/esm/Container'
 const reducer=(state,action)=>{
   switch(action.type){
     case "FETCH_REQUEST":
@@ -42,13 +43,18 @@ function HomeScreen (){
     fetchData()
   },[])
     return(
-        <div>
+    <>
+    <Row className='w-100 m-0 p-0 row-md-pull-1 ' >
+      <img src='https://m.media-amazon.com/images/I/71aQ3u78A3L._SX3000_.jpg'
+        alt="balck firyday"
+      />
+    </Row>
+      <Container className='row-md-push-2' md={8}>
           <Helmet>
             <title>Amazon</title>
           </Helmet>
         <h1>Fuatured Products</h1>
         <div className='products'>
-
         { loading ? (
         <LoadingBox />
         )
@@ -58,16 +64,15 @@ function HomeScreen (){
         :(
           <Row >
             { products.map(product=>(
-            <Col key={product.slug} sm={6} md={4} lg={3} className="mb-3">
+            <Col key={product.slug} sm={6} md={4} lg={3} className="mb-3 ml-0">
             <Product product={product} />
             </Col>
-  
            ))}
            </Row> 
-           
            )}
            </div>
-       </div>
+       </Container>
+       </>
     )
 }
 export default HomeScreen

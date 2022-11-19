@@ -25,7 +25,7 @@ export default function PaymentScreen() {
         navigate('/placeorder')
     }
   return (
-    <div>
+    <div className='m-3'>
       <CheckoutSteps step1 step2 step3></CheckoutSteps>
       <Helmet>
         <title>Payment screnn</title>

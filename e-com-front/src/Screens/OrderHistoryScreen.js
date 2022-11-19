@@ -50,7 +50,7 @@ export default function OrderHistoryScreen() {
     fetchData();
   }, [userInfo]);
   return (
-    <div>
+    <div className='m-3'>
       <Helmet>
         <title>Order History</title>
       </Helmet>

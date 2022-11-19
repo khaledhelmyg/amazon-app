@@ -6,6 +6,7 @@ import productRouter from './routes/productRoutes.js'
 import seedRouter from './routes/seedRoutes.js'
 import userRouter from './routes/userRoutes.js';
 import orderRouter from './routes/orderRoutes.js';
+import uploadRouter from './routes/'
 
 dotenv.config()
 const app=express()
@@ -19,18 +20,22 @@ mongoose
   .catch((err) => {
     console.log(err.message);
   });
-
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
   
   app.get('/api/keys/paypal', (req, res) => {
     res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
   });
-app.use('/api/seed',seedRouter)
-app.use('/api/products',productRouter)
-app.use('/api/orders',orderRouter)
-app.use('/api/users',userRouter)
-
+  app.get('/api/keys/google', (req, res) => {
+    res.send({ key: process.env.GOOGLE_API_KEY || '' });
+  });
+  
+  app.use('/api/seed', seedRouter);
+  app.use('/api/products', productRouter);
+  app.use('/api/users', userRouter);
+  app.use('/api/orders', orderRouter);
+  app.use('/api/upload', uploadRouter);
+  
 const __dirname=path.resolve()
 app.use(express.static(path.join(__dirname,'/e-com-front/build')))
 app.get('*',(req,res)=>{
