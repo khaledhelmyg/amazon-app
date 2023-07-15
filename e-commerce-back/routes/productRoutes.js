@@ -1,7 +1,8 @@
 import express from 'express';
 import expressAsyncHandler from 'express-async-handler';
 import Product from '../models/productModel.js';
-import { isAuth, isAdmin } from '../utils.js';
+import { isAuth, isAdmin } from '../utils/auth.js';
+import slugify from 'slugify';
 
 const productRouter = express.Router();
 
@@ -15,18 +16,20 @@ productRouter.post(
   isAuth,
   isAdmin,
   expressAsyncHandler(async (req, res) => {
-    const newProduct = new Product({
-      name: 'sample name ' + Date.now(),
-      slug: 'sample-name-' + Date.now(),
-      image: '/images/p1.jpg',
-      price: 0,
-      category: 'sample category',
-      brand: 'sample brand',
-      countInStock: 0,
-      rating: 0,
-      numReviews: 0,
-      description: 'sample description',
-    });
+    let { body } = req
+    const slug =await slugify(body.name) // some-string
+    body.slug = slug
+    const newProduct = new Product(req.body);
+    // name: 'sample name ' + Date.now(),
+    // slug: 'sample-name-' + Date.now(),
+    // image: '/images/p1.jpg',
+    // price: 0,
+    // category: 'sample category',
+    // brand: 'sample brand',
+    // countInStock: 0,
+    // rating: 0,
+    // numReviews: 0,
+    // description: 'sample description',
     const product = await newProduct.save();
     res.send({ message: 'Product Created', product });
   })

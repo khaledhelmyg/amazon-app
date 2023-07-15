@@ -1,5 +1,5 @@
 import express from 'express'
-import {isAuth ,isAdmin} from '../utils.js'
+import {isAuth ,isAdmin} from '../utils/auth.js'
 import expressAsyncHandler from 'express-async-handler'
 import Order from '../models/orderModel.js'
 import User from '../models/userModel.js';

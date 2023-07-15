@@ -1,6 +1,6 @@
 import express from 'express'
 import User from '../models/userModel.js'
-import { generateToken, isAdmin, isAuth } from '../utils.js'
+import { generateToken, isAdmin, isAuth } from '../utils/auth.js'
 import expressAsyncHandler from 'express-async-handler'
 import bcrypt from 'bcryptjs'
 const userRouter=express.Router()
@@ -36,6 +36,8 @@ userRouter.post(
 userRouter.post(
 '/signup',
 expressAsyncHandler(async (req, res) => {
+    const isExsist =  await User.findOne({email: req.body.email}) 
+    if(isExsist) return res.status(409).send({message :"this email already exsist!"})
     const newUser= new User({
         name: req.body.name,
         email:req.body.email,

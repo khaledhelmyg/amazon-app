@@ -1,49 +1,45 @@
-import express from 'express'
-import mongoose from 'mongoose'
-import dotenv from 'dotenv';
-import path from 'path'
-import productRouter from './routes/productRoutes.js'
-import seedRouter from './routes/seedRoutes.js'
-import userRouter from './routes/userRoutes.js';
-import orderRouter from './routes/orderRoutes.js';
-import uploadRouter from './routes/'
+import express from "express";
+import dotenv from "dotenv";
+import path from "path";
+import productRouter from "./routes/productRoutes.js";
+import seedRouter from "./routes/seedRoutes.js";
+import userRouter from "./routes/userRoutes.js";
+import orderRouter from "./routes/orderRoutes.js";
+import uploadRouter from "./routes/uploadRoutes.js";
 
-dotenv.config()
-const app=express()
-const PORT=process.env.PORT||5000
+import './config/mongdb.config.js'
+ 
+dotenv.config();
 
-mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() => {
-    console.log('connected to db');
-  })
-  .catch((err) => {
-    console.log(err.message);
-  });
-  app.use(express.json());
-  app.use(express.urlencoded({ extended: true }));
-  
-  app.get('/api/keys/paypal', (req, res) => {
-    res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
-  });
-  app.get('/api/keys/google', (req, res) => {
-    res.send({ key: process.env.GOOGLE_API_KEY || '' });
-  });
-  
-  app.use('/api/seed', seedRouter);
-  app.use('/api/products', productRouter);
-  app.use('/api/users', userRouter);
-  app.use('/api/orders', orderRouter);
-  app.use('/api/upload', uploadRouter);
-  
-const __dirname=path.resolve()
-app.use(express.static(path.join(__dirname,'/e-com-front/build')))
-app.get('*',(req,res)=>{
-  res.sendFile(path.join(__dirname,'/e-com-front/build/index.html'))
-})
-app.use((err,req,res,next)=>{
-  res.status(500).send({message:err.message})
-})
-app.listen(PORT,()=>{
-    console.log(`e-commerce is running at http://localhost:${PORT}`)
-})
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.get("/api/keys/paypal", (req, res) => {
+  res.send(process.env.PAYPAL_CLIENT_ID || "sb");
+});
+app.get("/api/keys/google", (req, res) => {
+  res.send({ key: process.env.GOOGLE_API_KEY || "" });
+});
+
+app.use("/api/seed", seedRouter);
+app.use("/api/products", productRouter);
+app.use("/api/users", userRouter);
+app.use("/api/orders", orderRouter);
+app.use("/api/upload", uploadRouter);
+
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, "/e-com-front/build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/e-com-front/build/index.html"));
+});
+app.use((err, req, res, next) => {
+  res.status(500).send({ message: err.message });
+});
+
+app.listen(PORT, () => {
+  console.log(`e-commerce is running at http://localhost:${PORT}`);
+});
